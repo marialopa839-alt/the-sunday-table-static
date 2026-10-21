@@ -1,0 +1,11 @@
+# The Sunday Table - all public content may be crawled, including by Googlebot and AdsBot-Google.
+User-agent: *
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+
