@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Browser routing lab · The Sunday Table</title>
+  <link rel="stylesheet" href="demo.css">
+  <script src="demo.js" defer></script>
+</head>
+<body><main>
+  <a href="../index.html">← The Sunday Table</a>
+  <p class="eyebrow">An opt-in learning experiment</p>
+  <h1>See how browser routing works.</h1>
+  <p>Browser details → your server → a rule result → a destination you choose to open.</p>
+  <section>
+    <h2>1. Choose a test</h2>
+    <label for="mode">Input</label>
+    <select id="mode">
+      <option value="actual">My current browser</option>
+      <option value="iphone">Simulated iPhone Safari — not a real device</option>
+      <option value="desktop">Simulated desktop — not a real device</option>
+    </select>
+    <p>The two simulated inputs let you see both outcomes without an iPhone. They do not emulate Safari.</p>
+    <label class="consent"><input id="consent" type="checkbox">
+      I agree to send the displayed user-agent, platform, language and touch-point count
+      to this site's demo server when I click “Evaluate”.</label>
+    <p>No Canvas/GPU fingerprinting, cookies, database, third-party script or external redirect.
+      The demo server receives your IP and HTTP headers as part of normal requests but does not log them.
+      Your hosting provider may keep its own request logs.</p>
+    <button id="inspect" type="button">Show details locally</button>
+    <button id="evaluate" type="button" disabled>Evaluate on my server</button>
+  </section>
+  <section>
+    <h2>2. Inspect the input</h2>
+    <p id="source">Nothing collected yet. Click “Show details locally”.</p>
+    <pre id="details">No data yet.</pre>
+  </section>
+  <section aria-live="polite">
+    <h2>3. Understand the decision</h2>
+    <p id="status">Waiting for a test. No automatic navigation.</p>
+    <ul id="checks"></ul>
+    <pre id="response">No server response yet.</pre>
+    <a id="continue" class="button" hidden>Continue to the chosen page</a>
+  </section>
+  <p class="note">These are intentionally simple, visible demo rules. Browser claims can be spoofed:
+    never use this mechanism for authorization, fraud prevention or access to sensitive data.</p>
+  <details><summary>Running this on static hosting?</summary>
+    <p>Static hosting can show this page but cannot run the POST endpoint. Start
+      <code>python demo_server.py</code> from the repository and open
+      <code>http://127.0.0.1:8000/routing-demo/</code>. See the demo README for Replit.
+      No data is silently sent to another service if the endpoint is unavailable.</p>
+  </details>
+  <noscript>This experiment requires JavaScript. Nothing is collected or submitted without it.</noscript>
+</main></body></html>
